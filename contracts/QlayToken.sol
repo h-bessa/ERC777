@@ -15,7 +15,15 @@ contract QlayToken is ERC777 {
     /**
      * @dev Constructor that gives msg.sender all of existing tokens.
      */
-    constructor () public ERC777("QlayToken", "S7", new address[](0)) {
-        _mint(msg.sender, 10000 * 10 ** 18, "", "");
+    constructor(
+        string memory name,
+        string memory symbol,
+        uint256 totalSupply,
+        address[] memory defaultOperators
+    )
+        ERC777(name, symbol, defaultOperators)
+        public
+    {
+        _mint(msg.sender, totalSupply, "", "");
     }
 }
